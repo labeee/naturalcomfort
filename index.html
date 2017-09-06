@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)http://staging_redes.pbeedifica.com.br/naturalconfort/ -->
+<html lang="pt-br"><head role="banner" class="navbar navbar-fixed-top navbar-inverse"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+<title>Natural Comfort</title>
+<script src="./Natural Comfort_files/jquery.min.js.download"></script>
+<link href="./Natural Comfort_files/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="./Natural Comfort_files/core.engine.30.08.17.js"></script>
+<script src="./Natural Comfort_files/bootstrap.min.js.download"></script>
+	
+</head>
+<body style="background:#333333">
+
+<div id="shortModal" class="modal modal-wide fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">SOBRE</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Desenvolvido por:</h4>
+            <ul class="list-inline">
+                <li>Rayner Maurício</li>
+                <li>Marcelo Olinger</li>
+                <li>Gabriel Baldessar</li>
+            </ul><br>
+        <h4>Metamodelo de:</h4>
+            <ul class="list-inline">
+                <li>Adams Rackes</li>
+            </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a id="outlog">
+
+</a>
+
+<div class="container">
+    
+<div class="row form-group" style="color: #70936c">
+    <div class="col-sm-6">
+		<label><h3 style="color: #008b8b; font-weight:bold; ">CIDADES</h3></label>
+        <select id="cidade" class="col-sm-2 form-control">
+		    <option></option>
+		    <option value="cidadeFlorianopolis">Florianópolis - SC</option>
+		    <option value="cidadeSaopaulo">São Paulo - SP</option>
+		    <option value="cidadeBrasilia">Brasília - DF</option>
+		</select><br>  
+    </div>
+    <div class="col-sm-6">
+		<label><h3 style="color: #008b8b; font-weight:bold; ">TIPO</h3></label>
+        <select id="tipo" class="col-sm-2 form-control">
+            <option></option>
+		    <option value="escritorio">Escritório</option>
+		    <option value="escola">Escola</option>
+		</select><br>          
+    </div>
+</div>
+
+<h3 style="color: #008b8b; font-weight:bold; ">PROPRIEDADES DIMENSIONAIS</h3>
+<div class="row form-group" style="color: #70936c">
+	<div class="col-sm-3">
+		<label>bldgLength</label>
+		<input id="bldgLength" class="form-control">
+	</div>
+	<div class="col-sm-3">
+		<label>bldgDepth</label>
+		<input id="bldgDepth" class="form-control">
+	</div>
+	<div class="col-sm-3">
+		<label>floorHeight</label>
+		<input id="floorHeight" class="form-control">
+	</div>
+	<div class="col-sm-3">
+		<label>Nfloors</label>
+		<input id="Nfloors" class="form-control">
+	</div>
+</div>
+    
+<div class="row form-group" style="color: #70936c;">
+	<div class="col-sm-3">
+		<label>roomSize</label>
+		<input id="roomSize" class="form-control">
+	</div>
+	<div class="col-sm-3">	
+		<label>stairFracFPA</label>
+		<input id="stairFracFPA" class="form-control">
+	</div>
+	<div class="col-sm-3">
+		<label>WWR</label>
+		<input id="WWR" class="form-control">
+	</div>
+	<div class="col-sm-3">	
+		<label>shadingAngle</label>
+		<select id="shadingAngle" class="form-control">
+            <option></option>
+			<option value="0">0°</option>
+			<option value="15">15°</option>
+			<option value="30">30°</option>
+			<option value="45">45°</option>
+		</select>
+	</div>
+</div>
+
+<h3 style="color: #008b8b; font-weight:bold; ">PROPRIEDADES TÉRMICAS</h3>
+
+<div class="row form-group" style="color: #70936c;">
+	<div class="col-sm-3">
+		<label>extWallAbs</label>
+		<input id="extWallAbs" class="form-control">
+	</div>
+	<div class="col-sm-3">
+		<label>extWallU</label>
+		<input id="extWallU" class="form-control">
+	</div>
+	<div class="col-sm-3">
+		<label>extWallCT</label>
+		<input id="extWallCT" class="form-control">
+	</div>
+	<div class="col-sm-3">
+		<label>roofAbs</label>
+		<input id="roofAbs" class="form-control">
+	</div>
+</div>
+<div class="row form-group" style="color: #70936c;">
+	<div class="col-sm-3">	
+		<label>roofU</label>
+		<input id="roofU" class="form-control">
+	</div>
+	<div class="col-sm-3">
+		<label>roofCT</label>
+		<input id="roofCT" class="form-control">
+	</div>
+	<div class="col-sm-3">
+		<label>SHGC</label>
+		<input id="SHGC" class="form-control">
+	</div>
+	<div class="col-sm-3">
+		<label>windowU</label>
+		<input id="windowU" class="form-control">
+	</div>
+</div>
+    
+<h3 style="color: #008b8b; font-weight:bold; ">VENTILAÇÃO</h3>
+<div class="row form-group" style="color: #70936c;">
+	<div class="col-sm-6">
+		<label>windAlpha</label>
+        <select id=windAlpha class="form-control">
+            <option></option>
+            <option value="0.33">Centros urbanos</option>
+            <option value="0.22">Áreas urbanas, suburbanas, industriais ou florestas</option>
+            <option value="0.14">Áreas rurais planas</option>
+            <option value="0.1">Regiões expostas a ventos vindos do oceano</option>
+        </select>
+	</div>
+	<div class="col-sm-6">
+		<label>averageShelter</label>
+        <select id="averageShelter" class="form-control">
+            <option></option>
+            <option value="1">Sem proteção local ou obstruções</option>
+            <option value="0.9">Proteção local leve com poucas obstruções</option>
+            <option value="0.7">Proteção densa com muitas obstruções</option>
+            <option value="0.5">Proteção muito densa com muitas obstruções grandes</option>
+            <option value="0.3">Proteção completa</option>
+        </select>
+	</div>
+</div>
+<div class="row form-group" style="color: #70936c;">
+	<div class="col-sm-4">
+		<label>PW_width2height</label>
+		<input id="PW_width2height" class="form-control">
+	</div>
+	<div class="col-sm-4">
+		<label>windowMaxOpenFrac</label>
+        <select id="windowMaxOpenFrac" class="form-control">
+            <option></option>
+            <option value="0.7">Janela basculante</option>
+            <option value="0.4">Janela de correr</option>
+        </select>
+	</div>
+	<div class="col-sm-4">
+		<label>ceilFanAirSpeedDelta</label>
+        <select id="ceilFanAirSpeedDelta" class="form-control">
+            <option></option>
+            <option value="0.35">Com ventilador</option>
+            <option value="0">Sem ventilador</option>
+        </select>
+	</div>
+</div>
+	<div class="row">
+		<div class="col-md-4">
+			<input type="button" id="calc" value="CALCULAR" onclick="main();" href="#windowOUTLOG" class="btn btn-primary btn-lg active col-sm-12" >
+		</div>
+		<div class="col-md-4">
+			<button data-toggle="modal" href="#windowOUTLOG" class="btn btn-primary  btn-lg active col-sm-12">SAÍDA</button>
+		</div>
+		<div class="col-md-4">
+			<button data-toggle="modal" href="#shortModal" class="btn btn-primary  btn-lg active col-sm-12">NATURAL COMFORT</button>
+		</div>
+	</div>
+</div>
+
+<div id='windowOUTLOG' class='modal modal-wide fade'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button><h4 class='modal-title'>SAÍDA</h4></div><div id='outlog'  class='modal-body'>
+<ul class='list'>
+	
+</ul></div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Fechar</button></div></div></div></div>
+
+</body></html>
