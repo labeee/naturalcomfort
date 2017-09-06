@@ -6,7 +6,8 @@ var geraldireita;
 
 $(document).ready(function() {
             $.ajax({
-                url: 'http://staging_redes.pbeedifica.com.br/naturalconfort/svm_parameters.json',
+                //url: 'http://staging_redes.pbeedifica.com.br/naturalconfort/svm_parameters.json',
+                url: 'https://raynermauricio.github.io/naturalcomfort/Natural Comfort_files/svm_parameters.json',
                 dataType: 'json',
                 type: 'POST',
                 success:function(response) {
