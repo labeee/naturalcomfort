@@ -9,11 +9,15 @@
 
 
 <link href="./css/select2.min.css" rel="stylesheet" />
+<link href="./css/help.css" rel="stylesheet" />
 <script src="./js/select2.min.js"></script>
 <link rel="stylesheet" href="./css/select2-bootstrap.css"/>
 
 <script type="text/javascript" src="./js/main.js"></script>
 <script type="text/javascript" src="./js/engine.js"></script>
+
+<link rel="stylesheet" href="./css/font-awesome.min.css">
+
 <script type="text/javascript">
 
 function redimensionar(){
@@ -22,7 +26,19 @@ function redimensionar(){
 	});
 };
 redimensionar();
+
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});
+
 </script>
+<style>
+
+a:visited {
+    color: #70936c;
+}
+
+</style>
 </head>
 <body style="background:#333333" onresize="redimensionar();">
 
@@ -78,38 +94,38 @@ redimensionar();
 <h4 style="color: #008b8b; font-weight:bold; ">CARACTERÍSTICAS GEOMÉTRICAS</h4>
 <div class="row form-group" style="color: #70936c">
 	<div class="col-sm-3">
-		<label>bldgLength</label>
+		<label>bldgLength <a href="#" data-toggle="popover" data-trigger="focus" title="Maior dimensão entre os lados da edificação" data-content="13 - 200 [m]"><i class="fa fa-info-circle"></i></a></label>
 		<input id="bldgLength" class="form-control">
 	</div>
 	<div class="col-sm-3">
-		<label>bldgDepth</label>
+		<label>bldgDepth <a href="#" data-toggle="popover" data-trigger="focus" title="Menor dimensão entre os lados da edificação" data-content="8 - 50 [m]"><i class="fa fa-info-circle"></i></a></label>
 		<input id="bldgDepth" class="form-control">
 	</div>
 	<div class="col-sm-3">
-		<label>floorHeight</label>
+		<label>floorHeight <a href="#" data-toggle="popover" data-trigger="focus" title="Altura entre pavimentos" data-content="2,75 - 4,25 [m]"><i class="fa fa-info-circle"></i></a></label>
 		<input id="floorHeight" class="form-control">
 	</div>
 	<div class="col-sm-3">
-		<label>Nfloors</label>
+		<label>Nfloors <a href="#" data-toggle="popover" data-trigger="focus" title="Número de pavimentos" data-content="1 - 5"><i class="fa fa-info-circle"></i></a></label>
 		<input id="Nfloors" class="form-control">
 	</div>
 </div>
     
 <div class="row form-group" style="color: #70936c;">
 	<div class="col-sm-3">
-		<label>roomSize</label>
+		<label>roomSize <a href="#" data-toggle="popover" data-trigger="focus" title="Área média das salas ocupadas" data-content="9 - 400 [m²]"><i class="fa fa-info-circle"></i></a></label>
 		<input id="roomSize" class="form-control">
 	</div>
 	<div class="col-sm-3">	
-		<label>stairFracFPA</label>
+		<label>stairFracFPA <a href="#" data-toggle="popover" data-trigger="focus" title="Fração total da área do edifício destinada às escadas" data-content="0 - 0,28"><i class="fa fa-info-circle"></i></a></label>
 		<input id="stairFracFPA" class="form-control">
 	</div>
 	<div class="col-sm-3">
-		<label>WWR</label>
+		<label>WWR <a href="#" data-toggle="popover" data-trigger="focus" title="Fração de abertura da fachada" data-content="0,05 - 0,7"><i class="fa fa-info-circle"></i></a></label>
 		<input id="WWR" class="form-control">
 	</div>
 	<div class="col-sm-3">	
-		<label>shadingAngle</label>
+		<label>shadingAngle <a href="#" data-toggle="popover" data-trigger="focus" data-content="Ângulo médio de sombreamento vertical médio"><i class="fa fa-info-circle"></i></a></label>
 		<select id="shadingAngle" class="form-control js-example-basic-single">
             <option></option>
 			<option value="0">0°</option>
@@ -124,37 +140,37 @@ redimensionar();
 
 <div class="row form-group" style="color: #70936c;">
 	<div class="col-sm-3">
-		<label>extWallAbs</label>
+		<label>extWallAbs <a href="#" data-toggle="popover" data-trigger="focus" title="Absortância solar média das paredes externas" data-content="0,2 - 0,8"><i class="fa fa-info-circle"></i></a></label>
 		<input id="extWallAbs" class="form-control">
 	</div>
 	<div class="col-sm-3">
-		<label>extWallU</label>
+		<label>extWallU <a href="#" data-toggle="popover" data-trigger="focus" title="Transmitância térmica média das paredes" data-content="0,1 - 5 [W/m².K]"><i class="fa fa-info-circle"></i></a></label>
 		<input id="extWallU" class="form-control">
 	</div>
 	<div class="col-sm-3">
-		<label>extWallCT</label>
+		<label>extWallCT <a href="#" data-toggle="popover" data-trigger="focus" title="Capacidade térmica média das paredes" data-content="40 - 500 [kJ/ m².K]"><i class="fa fa-info-circle"></i></a></label>
 		<input id="extWallCT" class="form-control">
 	</div>
 	<div class="col-sm-3">
-		<label>roofAbs</label>
+		<label>roofAbs <a href="#" data-toggle="popover" data-trigger="focus" title="Absortância solar média da cobertura" data-content="0,2 - 0,8"><i class="fa fa-info-circle"></i></a></label>
 		<input id="roofAbs" class="form-control">
 	</div>
 </div>
 <div class="row form-group" style="color: #70936c;">
 	<div class="col-sm-3">	
-		<label>roofU</label>
+		<label>roofU <a href="#" data-toggle="popover" data-trigger="focus" title="Transmitância térmica média da cobertura" data-content="0,1 - 5 [W/m².K]"><i class="fa fa-info-circle"></i></a></label>
 		<input id="roofU" class="form-control">
 	</div>
 	<div class="col-sm-3">
-		<label>roofCT</label>
+		<label>roofCT <a href="#" data-toggle="popover" data-trigger="focus" title="Capacidade térmica média da cobertura" data-content="10 - 400 [kJ/ m².K]"><i class="fa fa-info-circle"></i></a></label>
 		<input id="roofCT" class="form-control">
 	</div>
 	<div class="col-sm-3">
-		<label>SHGC</label>
+		<label>SHGC <a href="#" data-toggle="popover" data-trigger="focus" title="Coeficiente de ganho solar do vidro" data-content="0,2 - 0,8"><i class="fa fa-info-circle"></i></a></label>
 		<input id="SHGC" class="form-control">
 	</div>
 	<div class="col-sm-3">
-		<label>windowU</label>
+		<label>windowU <a href="#" data-toggle="popover" data-trigger="focus" title="Transmitância térmica do vidro" data-content="1 - 6 [W/m².K]"><i class="fa fa-info-circle"></i></a></label>
 		<input id="windowU" class="form-control">
 	</div>
 </div>
@@ -162,7 +178,7 @@ redimensionar();
 <h4 style="color: #008b8b; font-weight:bold; ">VENTILAÇÃO</h4>
 <div class="row form-group" style="color: #70936c;">
 	<div class="col-sm-6">
-		<label>windAlpha</label>
+		<label>windAlpha <a href="#" data-toggle="popover" data-trigger="focus" data-content="Fator de correção da velocidade do ar externa"><i class="fa fa-info-circle"></i></a></label>
         <select id=windAlpha class="form-control js-example-basic-single">
             <option></option>
             <option value="0.33">Centros urbanos</option>
@@ -172,7 +188,7 @@ redimensionar();
         </select>
 	</div>
 	<div class="col-sm-6">
-		<label>averageShelter</label>
+		<label>averageShelter <a href="#" data-toggle="popover" data-trigger="focus" data-content="Obstáculos do entorno"><i class="fa fa-info-circle"></i></a></label>
         <select id="averageShelter" class="form-control js-example-basic-single">
             <option></option>
             <option value="1">Sem proteção local ou obstruções</option>
@@ -185,11 +201,11 @@ redimensionar();
 </div>
 <div class="row form-group" style="color: #70936c;">
 	<div class="col-sm-4">
-		<label>PW_width2height</label>
+		<label>PW_width2height <a href="#" data-toggle="popover" data-trigger="focus" title="Relação entre a largura e a altura das janelas primárias" data-content="0,1 - 50"><i class="fa fa-info-circle"></i></a></label>
 		<input id="PW_width2height" class="form-control">
 	</div>
 	<div class="col-sm-4">
-		<label>windowMaxOpenFrac</label>
+		<label>windowMaxOpenFrac <a href="#" data-toggle="popover" data-trigger="focus" data-content="Média da fração máxima de abertura de todas as janelas"><i class="fa fa-info-circle"></i></a></label>
         <select id="windowMaxOpenFrac" class="form-control js-example-basic-single">
             <option></option>
             <option value="0.7">Janela basculante</option>
@@ -197,7 +213,7 @@ redimensionar();
         </select>
 	</div>
 	<div class="col-sm-4">
-		<label>ceilFanAirSpeedDelta</label>
+		<label>ceilFanAirSpeedDelta <a href="#" data-toggle="popover" data-trigger="focus" data-content="Incremento da velocidade do ar a partir de ventiladores de teto"><i class="fa fa-info-circle"></i></a></label>
         <select id="ceilFanAirSpeedDelta" class="form-control js-example-basic-single">
             <option></option>
             <option value="0.35">Com ventilador</option>
