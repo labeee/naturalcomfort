@@ -1,60 +1,3 @@
-var vectors;
-var alphas;
-var validar=[];
-var geralesquerda;
-var geraldireita;
-
-$(document).ready(function() {
-            $.ajax({
-                //url: 'http://staging_redes.pbeedifica.com.br/naturalconfort/svm_parameters.json',
-                url: 'https://raynermauricio.github.io/naturalcomfort/Natural Comfort_files/svm_parameters.json',
-                dataType: 'json',
-                type: 'POST',
-                success:function(response) {
-                    vectors = response.vectors;
-                    alphas  = response.alphas;
-                }
-            })
-        })
-    
-        cidades = {
-            "cidadeSaopaulo" : {
-                "Tout": 19.5676255708,
-                "ToutDailyVar": 8.342739726,
-                "ToutAnnualVar": 15.0833333333,
-                "CDD18": 918.6041666667,
-                "CDD25": 97.1666666667,
-                "radDirNorm": 60.3090182648,
-                "radDiffHoriz": 86.2744292237,
-                "windSpeedMet": 2.083390411,
-                "elevation": 792.0
-            },
-
-            "cidadeFlorianopolis" : {
-                "Tout": 20.912545662100477,
-                "ToutDailyVar": 7.1860273972602755,
-                "ToutAnnualVar": 17.358333333333327,
-                "CDD18": 1284.2541666666675,
-                "CDD25": 94.08749999999992,
-                "radDirNorm": 61.837785388127855,
-                "radDiffHoriz": 85.0458904109589,
-                "windSpeedMet": 2.4301027397260344,
-                "elevation": 2.0    
-            },
-
-            "cidadeBrasilia" : {
-                "Tout": 21.081484018264756,
-                "ToutDailyVar": 9.294246575342468,
-                "ToutAnnualVar": 10.149999999999991,
-                "CDD18": 1224.9249999999981,
-                "CDD25": 98.7291666666667,
-                "radDirNorm": 89.24006849315069,
-                "radDiffHoriz": 95.19851598173516,
-                "windSpeedMet": 2.464406392694072,
-                "elevation": 1160.0  
-            }
-        };
-
     function svmPredict(Xsc) {
         
         var b = -2.0728;
@@ -266,6 +209,8 @@ $(document).ready(function() {
         termStats['windSpeedMet'] =         [0,            0,            0,    50,      2];
         termStats['windAlpha'] =            [0,            0,            0.1,    0.4,     0.22];
         termStats['averageShelter'] =       [0,            0,            0.3,    1,       0.8];
+		// apenas para rodar
+		termStats['CDD18study'] =           [2106.925172,    904.1588487,    0,    3800,    2100];
         
         return (termStats);
     }
@@ -276,81 +221,18 @@ $(document).ready(function() {
         var numericInput = errorCheckInputAndAddDefaults(textInput);
         var terms = addCompositeTerms(numericInput);
         var Xsc = scaleTerms(terms);
-        var uhat = svmPredict(Xsc); // in logistic space
-        var yhat = unLogistic(uhat);
+        var uhat = svmPredict(Xsc);
+		
+		var CDD18study = textInput["CDD18study"]
+		var CDD18 = textInput["CDD18"]
+		var F = (CDD18/365)/(CDD18study/320)
+		var yhat = unLogistic(uhat)+ (2.2764*10**-4)*(F-1)*CDD18
+		if (yhat > 1){
+			yhat = 1        
+		}
+		if (yhat < 0){
+			yhat=0
+		}
         
         return (yhat); 
-    }
-    function main() {
-		var outlog="";
-        var ConstrucaoInputs = [];
-        ConstrucaoInputs["bldgLength"] = parseFloat($('#bldgLength').val());
-        ConstrucaoInputs["bldgDepth"] = parseFloat($('#bldgDepth').val());
-        ConstrucaoInputs["floorHeight"] = parseFloat($('#floorHeight').val());
-        ConstrucaoInputs["Nfloors"] = parseFloat($('#Nfloors').val());
-        ConstrucaoInputs["roomSize"] = parseFloat($('#roomSize').val());
-        ConstrucaoInputs["stairFracFPA"] = parseFloat($('#stairFracFPA').val());
-        ConstrucaoInputs["WWR"] = parseFloat($('#WWR').val());
-        ConstrucaoInputs["shadingAngle"] = parseFloat($('#shadingAngle').val());
-        ConstrucaoInputs["extWallAbs"] = parseFloat($('#extWallAbs').val());
-        ConstrucaoInputs["extWallU"] = parseFloat($('#extWallU').val());
-        ConstrucaoInputs["extWallCT"] = parseFloat($('#extWallCT').val());
-        ConstrucaoInputs["roofAbs"] = parseFloat($('#roofAbs').val());
-        ConstrucaoInputs["roofU"] = parseFloat($('#roofU').val());
-        ConstrucaoInputs["roofCT"] = parseFloat($('#roofCT').val());
-        ConstrucaoInputs["SHGC"] = parseFloat($('#SHGC').val());
-        ConstrucaoInputs["windowU"] = parseFloat($('#windowU').val());
-		ConstrucaoInputs["tipo"] = $('#tipo').val(); // escritorio ou escola
-        ConstrucaoInputs["windAlpha"] = parseFloat($('#windAlpha').val());
-        ConstrucaoInputs["averageShelter"] = parseFloat($('#averageShelter').val());
-        ConstrucaoInputs["windowMaxOpenFrac"] = parseFloat($('#windowMaxOpenFrac').val());
-        ConstrucaoInputs["NVW_WWR"] = 0;
-        ConstrucaoInputs["PW_width2height"] = parseFloat($('#PW_width2height').val());
-        ConstrucaoInputs["PW_Cd"] = 0.4;
-        ConstrucaoInputs["interiorELAperLen"] = 0.11;
-        ConstrucaoInputs["ceilFanAirSpeedDelta"] = parseFloat($('#ceilFanAirSpeedDelta').val());
-		if (ConstrucaoInputs["tipo"]=="escritorio"){
-			ConstrucaoInputs["roomELPD"] = 25;
-			ConstrucaoInputs["publicELPD"] = 15;
-			ConstrucaoInputs["occDensity"] = 0.1;
-			ConstrucaoInputs["dayStart"] = 8;
-			ConstrucaoInputs["dayEnd"] = 18;
-		}
-		if (ConstrucaoInputs["tipo"]=="escola"){
-			ConstrucaoInputs["roomELPD"] = 23.8;
-			ConstrucaoInputs["publicELPD"] = 14.1;
-			ConstrucaoInputs["occDensity"] = 0.667;
-			ConstrucaoInputs["dayStart"] = 9;
-			ConstrucaoInputs["dayEnd"] = 17;
-		}
-		delete(ConstrucaoInputs["tipo"])
-        var buscacidade = document.getElementById("cidade").value;
-        var CidadeInput = (cidades[buscacidade]);
-        var input = Object.assign({}, ConstrucaoInputs, CidadeInput);
-		var ts = defineTermStats();
-		for (i in ConstrucaoInputs){
-			if (ConstrucaoInputs[i]>=ts[i][2] && ConstrucaoInputs[i]<=ts[i][3]){
-				validar.push(0);
-			} else {
-				validar.push(1);
-				//alert(i+" deve ser maior que "+(ts[i][2]).toString()+" e menor que "+(ts[i][3]).toString())
-				outlog=outlog+"<li>"+i+" deve ser maior que "+(ts[i][2]).toString()+" e menor que "+(ts[i][3]).toString()+"</li>";
-				//console.log(i)
-			}
-		}
-		
-		
-		geralesquerda="<div id='windowOUTLOG' class='modal modal-wide fade'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button><h4 class='modal-title'>CONSOLE</h4></div><div class='modal-body'><ul id='outlog' class='list-inline'>";
-		
-		geraldireita="</ul></div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Fechar</button></div></div></div></div>";
-		
-		
-		if (Math.max.apply(null, validar)==0 && Math.min.apply(null, validar)==0){
-			var resultado = 100*makePrediction(input).toFixed(2);
-			//alert("EHF = "+resultado+"%");
-			outlog="EHF = "+resultado+"%"
-			document.getElementById("outlog").innerHTML=geralesquerda+outlog+geraldireita
-		} else {
-			document.getElementById("outlog").innerHTML=geralesquerda+outlog+geraldireita
-		}
     }
