@@ -3353,7 +3353,7 @@ var cidades = [
     "CDD18study": 2795.354167
   },
   {
-    "cidade": "Manaus-Gomez Intl - AM",
+    "cidade": "Manaus - AM",
     "latitude": -3.1,
     "longitude": -60.03,
     "Tout": 27.27947489,
