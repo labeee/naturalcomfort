@@ -90,34 +90,41 @@ a:visited {
 <div class="row form-group" style="color: #70936c">
 	<div class="col-sm-3">
 		<label>bldgLength <a href="#" data-toggle="popover" data-trigger="focus" title="Maior dimensão entre os lados da edificação" data-content="13 - 200 [m]"><i class="fa fa-info-circle"></i></a></label>
-		<input id="bldgLength" class="form-control">
+		<input type="number" id="bldgLength" class="form-control">
 	</div>
 	<div class="col-sm-3">
 		<label>bldgDepth <a href="#" data-toggle="popover" data-trigger="focus" title="Menor dimensão entre os lados da edificação" data-content="8 - 50 [m]"><i class="fa fa-info-circle"></i></a></label>
-		<input id="bldgDepth" class="form-control">
+		<input type="number" id="bldgDepth" class="form-control">
 	</div>
 	<div class="col-sm-3">
-		<label>floorHeight <a href="#" data-toggle="popover" data-trigger="focus" title="Altura entre pavimentos" data-content="2,75 - 4,25 [m]"><i class="fa fa-info-circle"></i></a></label>
-		<input id="floorHeight" class="form-control">
+		<label>floorHeight <a href="#" data-toggle="popover" data-trigger="focus" title="Altura entre pavimentos" data-content="2.75 - 4.25 [m]"><i class="fa fa-info-circle"></i></a></label>
+		<input type="number" id="floorHeight" class="form-control">
 	</div>
 	<div class="col-sm-3">
 		<label>Nfloors <a href="#" data-toggle="popover" data-trigger="focus" title="Número de pavimentos" data-content="1 - 5"><i class="fa fa-info-circle"></i></a></label>
-		<input id="Nfloors" class="form-control">
+		<select id="Nfloors" class="form-control js-example-basic-single">
+            <option></option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+		</select>
 	</div>
 </div>
     
 <div class="row form-group" style="color: #70936c;">
 	<div class="col-sm-3">
 		<label>roomSize <a href="#" data-toggle="popover" data-trigger="focus" title="Área média das salas ocupadas" data-content="9 - 400 [m²]"><i class="fa fa-info-circle"></i></a></label>
-		<input id="roomSize" class="form-control">
+		<input type="number" id="roomSize" class="form-control">
 	</div>
 	<div class="col-sm-3">	
-		<label>stairFracFPA <a href="#" data-toggle="popover" data-trigger="focus" title="Fração total da área do edifício destinada às escadas" data-content="0 - 0,28"><i class="fa fa-info-circle"></i></a></label>
-		<input id="stairFracFPA" class="form-control">
+		<label>stairFracFPA <a href="#" data-toggle="popover" data-trigger="focus" title="Fração total da área do edifício destinada às escadas" data-content="0 - 0.28"><i class="fa fa-info-circle"></i></a></label>
+		<input type="number" id="stairFracFPA" class="form-control">
 	</div>
 	<div class="col-sm-3">
-		<label>WWR <a href="#" data-toggle="popover" data-trigger="focus" title="Fração de abertura da fachada" data-content="0,05 - 0,7"><i class="fa fa-info-circle"></i></a></label>
-		<input id="WWR" class="form-control">
+		<label>WWR <a href="#" data-toggle="popover" data-trigger="focus" title="Fração de abertura da fachada" data-content="0.05 - 0.7"><i class="fa fa-info-circle"></i></a></label>
+		<input type="number" id="WWR" class="form-control">
 	</div>
 	<div class="col-sm-3">	
 		<label>shadingAngle <a href="#" data-toggle="popover" data-trigger="focus" data-content="Ângulo médio de sombreamento vertical médio"><i class="fa fa-info-circle"></i></a></label>
@@ -135,38 +142,38 @@ a:visited {
 
 <div class="row form-group" style="color: #70936c;">
 	<div class="col-sm-3">
-		<label>extWallAbs <a href="#" data-toggle="popover" data-trigger="focus" title="Absortância solar média das paredes externas" data-content="0,2 - 0,8"><i class="fa fa-info-circle"></i></a></label>
-		<input id="extWallAbs" class="form-control">
+		<label>extWallAbs <a href="#" data-toggle="popover" data-trigger="focus" title="Absortância solar média das paredes externas" data-content="0.2 - 0.8"><i class="fa fa-info-circle"></i></a></label>
+		<input type="number" id="extWallAbs" class="form-control">
 	</div>
 	<div class="col-sm-3">
-		<label>extWallU <a href="#" data-toggle="popover" data-trigger="focus" title="Transmitância térmica média das paredes" data-content="0,1 - 5 [W/m².K]"><i class="fa fa-info-circle"></i></a></label>
-		<input id="extWallU" class="form-control">
+		<label>extWallU <a href="#" data-toggle="popover" data-trigger="focus" title="Transmitância térmica média das paredes" data-content="0.1 - 5 [W/m².K]"><i class="fa fa-info-circle"></i></a></label>
+		<input type="number" id="extWallU" class="form-control">
 	</div>
 	<div class="col-sm-3">
 		<label>extWallCT <a href="#" data-toggle="popover" data-trigger="focus" title="Capacidade térmica média das paredes" data-content="40 - 500 [kJ/ m².K]"><i class="fa fa-info-circle"></i></a></label>
-		<input id="extWallCT" class="form-control">
+		<input type="number" id="extWallCT" class="form-control">
 	</div>
 	<div class="col-sm-3">
-		<label>roofAbs <a href="#" data-toggle="popover" data-trigger="focus" title="Absortância solar média da cobertura" data-content="0,2 - 0,8"><i class="fa fa-info-circle"></i></a></label>
-		<input id="roofAbs" class="form-control">
+		<label>roofAbs <a href="#" data-toggle="popover" data-trigger="focus" title="Absortância solar média da cobertura" data-content="0.2 - 0.8"><i class="fa fa-info-circle"></i></a></label>
+		<input type="number" id="roofAbs" class="form-control">
 	</div>
 </div>
 <div class="row form-group" style="color: #70936c;">
 	<div class="col-sm-3">	
-		<label>roofU <a href="#" data-toggle="popover" data-trigger="focus" title="Transmitância térmica média da cobertura" data-content="0,1 - 5 [W/m².K]"><i class="fa fa-info-circle"></i></a></label>
-		<input id="roofU" class="form-control">
+		<label>roofU <a href="#" data-toggle="popover" data-trigger="focus" title="Transmitância térmica média da cobertura" data-content="0.1 - 5 [W/m².K]"><i class="fa fa-info-circle"></i></a></label>
+		<input type="number" id="roofU" class="form-control">
 	</div>
 	<div class="col-sm-3">
 		<label>roofCT <a href="#" data-toggle="popover" data-trigger="focus" title="Capacidade térmica média da cobertura" data-content="10 - 400 [kJ/ m².K]"><i class="fa fa-info-circle"></i></a></label>
-		<input id="roofCT" class="form-control">
+		<input type="number" id="roofCT" class="form-control">
 	</div>
 	<div class="col-sm-3">
-		<label>SHGC <a href="#" data-toggle="popover" data-trigger="focus" title="Coeficiente de ganho solar do vidro" data-content="0,2 - 0,8"><i class="fa fa-info-circle"></i></a></label>
-		<input id="SHGC" class="form-control">
+		<label>SHGC <a href="#" data-toggle="popover" data-trigger="focus" title="Coeficiente de ganho solar do vidro" data-content="0.2 - 0.8"><i class="fa fa-info-circle"></i></a></label>
+		<input type="number" id="SHGC" class="form-control">
 	</div>
 	<div class="col-sm-3">
 		<label>windowU <a href="#" data-toggle="popover" data-trigger="focus" title="Transmitância térmica do vidro" data-content="1 - 6 [W/m².K]"><i class="fa fa-info-circle"></i></a></label>
-		<input id="windowU" class="form-control">
+		<input type="number" id="windowU" class="form-control">
 	</div>
 </div>
     
@@ -196,8 +203,8 @@ a:visited {
 </div>
 <div class="row form-group" style="color: #70936c;">
 	<div class="col-sm-4">
-		<label>PW_width2height <a href="#" data-toggle="popover" data-trigger="focus" title="Relação entre a largura e a altura das janelas primárias" data-content="0,1 - 50"><i class="fa fa-info-circle"></i></a></label>
-		<input id="PW_width2height" class="form-control">
+		<label>PW_width2height <a href="#" data-toggle="popover" data-trigger="focus" title="Relação entre a largura e a altura das janelas primárias" data-content="0.1 - 50"><i class="fa fa-info-circle"></i></a></label>
+		<input type="number" id="PW_width2height" class="form-control">
 	</div>
 	<div class="col-sm-4">
 		<label>windowMaxOpenFrac <a href="#" data-toggle="popover" data-trigger="focus" data-content="Média da fração máxima de abertura de todas as janelas"><i class="fa fa-info-circle"></i></a></label>
