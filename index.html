@@ -7,10 +7,8 @@
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 <script src="./js/bootstrap.min.js"></script>
 <link href="./css/select2.min.css" rel="stylesheet" />
-<link href="./css/help.css" rel="stylesheet" />
 <script src="./js/select2.min.js"></script>
 <link rel="stylesheet" href="./css/select2-bootstrap.css"/>
-<script type="text/javascript" src="./js/main.js"></script>
 <script type="text/javascript" src="./js/engine.js"></script>
 <link rel="stylesheet" href="./css/font-awesome.min.css">
 <script type="text/javascript">
@@ -25,6 +23,8 @@ redimensionar();
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover();   
 });
+
+var x;
 
 </script>
 <style>
@@ -63,6 +63,7 @@ a:visited {
   </div>
 </div>
 
+
 <a id="outlog">
 
 </a>
@@ -78,7 +79,7 @@ a:visited {
 	</div>	
 	<div class="col-sm-6">		
 		<label><h4 style="color: #008b8b; font-weight:bold; ">TIPOLOGIA</h4></label>
-        <select id="tipo" class="form-control col-sm-12 js-example-basic-single">
+        <select id="tipologia" class="form-control col-sm-12 js-example-basic-single">
             <option></option>
 		    <option value="escritorio">Escritório</option>
 		    <option value="escola">Escola</option>
@@ -225,7 +226,7 @@ a:visited {
 </div>
 	<div class="row">
 		<div class="col-md-6">
-			<button data-toggle="modal" id="calc" onclick="main();" href="#windowOUTLOG" class="btn btn-primary  btn-lg active col-sm-12">CALCULAR</button>
+			<button data-toggle="modal" id="calc" onclick="main();" href="#windowOUTLOG" class="btn btn-primary  btn-lg active col-sm-12">CALCULAR</button> 
 		</div>
 		<div class="col-md-6">
 			<button data-toggle="modal" href="#shortModal" class="btn btn-primary  btn-lg active col-sm-12">NATURAL COMFORT</button>

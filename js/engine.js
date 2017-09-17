@@ -55,22 +55,16 @@
         terms['ARsym'] = Math.max(terms['bldgDepth'],terms['bldgLength'])/Math.min(terms['bldgDepth'],terms['bldgLength']);      
         
         if (terms['ARsym'] > 4){
-            //alert('Building aspect ratio is ' + (terms['ARsym']).toString() + ', porém não deveria exceder a 4');
-			outlog=outlog+"<li>"+'Building aspect ratio is ' + (terms['ARsym']).toString() + ', porém não deveria exceder a 4'+"</li>"
-            //x = 1;
-			validar.push(1);
-            return 0;
+			outlog=outlog+"<li style='color: #000000'>"+'Building aspect ratio is ' + (terms['ARsym']).toString() + ', porém não deveria exceder a 4'+"</li>"
+            validate = 1;
         }
         
         terms['bldgHeight'] = terms['Nfloors']*terms['floorHeight'];
         
         
         if (terms['bldgHeight'] > 16){
-            //alert('A altura do edifício é ' + (terms['bldgHeight']).toString() + ', porém não deveria exceder a 16 m');
-			outlog=outlog+"<li>"+'A altura do edifício é ' + (terms['bldgHeight']).toString() + ', porém não deveria exceder a 16 m'+"</li>"
-            //x = 1;
-			validar.push(1);
-            return 0;
+			outlog=outlog+"<li style='color: #000000'>"+'A altura do edifício é ' + (terms['bldgHeight']).toString() + ', porém não deveria exceder a 16 m'+"</li>"
+            validate = 1;
         }
         
         
@@ -114,34 +108,19 @@
             }
         
             if (numericInput[key] < ts[key][2]){
-                //alert(key + ' must be greater than ' + (ts[key][2]).toString());
-				outlog=outlog+"<li>"+key + ' must be greater than ' + (ts[key][2]).toString()+"</li>"
-                //x = 1;
-				validar.push(1);
-                return 0;
+				outlog=outlog+"<li style='color: #000000'>"+key + ' deve ser maior que ' + (ts[key][2]).toString()+"</li>"
+                validate = 1;
             }
             
             if (numericInput[key] > ts[key][3]){
-                alert(key + ' must be less than ' + (ts[key][3]).toString());
-                //x = 1;
-				validar.push(1);
-                return 0
+                outlog=outlog+"<li style='color: #000000'>"+key + ' deve ser menor que ' + (ts[key][3]).toString()+"</li>"
+                validate = 1;
             }
         }        
-        if (numericInput['NVW_WWR'] > numericInput['WWR']){
-            //alert('Night ventilation WWR cannot exceed total WWR (NVW_WWR = ' + (numericInput['NVW_WWR']).toString() + ', WWR = ' + (numericInput['WWR']).toString() + ')');
-			outlog=outlog+"<li>"+'Night ventilation WWR cannot exceed total WWR (NVW_WWR = ' + (numericInput['NVW_WWR']).toString() + ', WWR = ' + (numericInput['WWR']).toString() + ')'+"</li>"
-            //x = 1;
-			validar.push(1);
-            return 0;
-        }
             
         if (numericInput['stairFracFPA'] > 0 && numericInput['Nfloors'] == 1){
-            //alert('stairFracFPA must be 0 for single story buildings');
-			outlog=outlog+"<li>"+'stairFracFPA must be 0 for single story buildings'+"</li>"
-            //x = 1;
-			validar.push(1);
-            return 0;
+			outlog=outlog+"<li style='color: #000000'>"+'stairFracFPA deve ser 0 edificações com Nfloor igual a 1'+"</li>"
+            validate = 1;
         }
         
         return (numericInput);
@@ -218,15 +197,15 @@
 
     function makePrediction(textInput){
         
-        var numericInput = errorCheckInputAndAddDefaults(textInput);
-        var terms = addCompositeTerms(numericInput);
-        var Xsc = scaleTerms(terms);
-        var uhat = svmPredict(Xsc);
+        numericInput = errorCheckInputAndAddDefaults(textInput);
+        terms = addCompositeTerms(numericInput);
+        Xsc = scaleTerms(terms);
+        uhat = svmPredict(Xsc);
 		
-		var CDD18study = textInput["CDD18study"]
-		var CDD18 = textInput["CDD18"]
-		var F = (CDD18/365)/(CDD18study/320)
-		var yhat = unLogistic(uhat)+ (2.2764*10**-4)*(F-1)*CDD18
+		CDD18study = textInput["CDD18study"]
+		CDD18 = textInput["CDD18"]
+		F = (CDD18/365)/(CDD18study/320)
+		yhat = unLogistic(uhat)+ (2.2764*10**-4)*(F-1)*CDD18
 		if (yhat > 1){
 			yhat = 1        
 		}
@@ -235,4 +214,101 @@
 		}
         
         return (yhat); 
+    }
+	
+	function main() {
+
+	outlog="";
+    ConstrucaoInputs=[];
+	validate = 0;
+	
+		
+        
+		ConstrucaoInputs["bldgLength"] = parseFloat($('#bldgLength').val());
+        ConstrucaoInputs["bldgDepth"] = parseFloat($('#bldgDepth').val());
+        ConstrucaoInputs["floorHeight"] = parseFloat($('#floorHeight').val());
+        ConstrucaoInputs["Nfloors"] = parseFloat($('#Nfloors').val());
+        ConstrucaoInputs["roomSize"] = parseFloat($('#roomSize').val());
+        ConstrucaoInputs["stairFracFPA"] = parseFloat($('#stairFracFPA').val());
+        ConstrucaoInputs["WWR"] = parseFloat($('#WWR').val());
+        ConstrucaoInputs["shadingAngle"] = parseFloat($('#shadingAngle').val());
+        ConstrucaoInputs["extWallAbs"] = parseFloat($('#extWallAbs').val());
+        ConstrucaoInputs["extWallU"] = parseFloat($('#extWallU').val());
+        ConstrucaoInputs["extWallCT"] = parseFloat($('#extWallCT').val());
+        ConstrucaoInputs["roofAbs"] = parseFloat($('#roofAbs').val());
+        ConstrucaoInputs["roofU"] = parseFloat($('#roofU').val());
+        ConstrucaoInputs["roofCT"] = parseFloat($('#roofCT').val());
+        ConstrucaoInputs["SHGC"] = parseFloat($('#SHGC').val());
+        ConstrucaoInputs["windowU"] = parseFloat($('#windowU').val());
+		ConstrucaoInputs["tipologia"] = $('#tipologia').val(); // escritorio ou escola
+        ConstrucaoInputs["windAlpha"] = parseFloat($('#windAlpha').val());
+        ConstrucaoInputs["averageShelter"] = parseFloat($('#averageShelter').val());
+        ConstrucaoInputs["windowMaxOpenFrac"] = parseFloat($('#windowMaxOpenFrac').val());
+        ConstrucaoInputs["NVW_WWR"] = 0;
+        ConstrucaoInputs["PW_width2height"] = parseFloat($('#PW_width2height').val());
+        ConstrucaoInputs["PW_Cd"] = 0.4;
+        ConstrucaoInputs["interiorELAperLen"] = 0.11;
+        ConstrucaoInputs["ceilFanAirSpeedDelta"] = parseFloat($('#ceilFanAirSpeedDelta').val());
+		if (ConstrucaoInputs["tipologia"]=="escritorio"){
+			ConstrucaoInputs["roomELPD"] = 25;
+			ConstrucaoInputs["publicELPD"] = 15;
+			ConstrucaoInputs["occDensity"] = 0.1;
+			ConstrucaoInputs["dayStart"] = 8;
+			ConstrucaoInputs["dayEnd"] = 18;
+		}
+		if (ConstrucaoInputs["tipologia"]=="escola"){
+			ConstrucaoInputs["roomELPD"] = 23.8;
+			ConstrucaoInputs["publicELPD"] = 14.1;
+			ConstrucaoInputs["occDensity"] = 0.667;
+			ConstrucaoInputs["dayStart"] = 9;
+			ConstrucaoInputs["dayEnd"] = 17;
+		}
+		delete(ConstrucaoInputs["tipologia"])
+			
+        var buscacidade = document.getElementById("cidades").value;
+		var CidadeInput;
+		for (var i in cidades){
+			if (cidades[i]["cidade"]==buscacidade){
+				CidadeInput=cidades[i];
+			};
+		};
+		
+        input = Object.assign({}, ConstrucaoInputs, CidadeInput);
+
+		delete input['cidade'];
+		delete input['latitude'];
+		delete input['longitude'];		
+		
+		var JAJAJAJAJA=makePrediction(input).toFixed(2);
+		
+		geralesquerda="<div id='windowOUTLOG' class='modal modal-wide fade'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button><h4 class='modal-title'>CONSOLE</h4></div><div class='modal-body'><ul id='outlog' class='list-inline'>";
+		
+		geraldireita="</ul></div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Fechar</button></div></div></div></div>";
+	
+       
+		if (validate==0 && JAJAJAJAJA!="NaN") {
+            outlog="EHF = "+100*JAJAJAJAJA+"%"
+            document.getElementById("outlog").innerHTML=geralesquerda+outlog+geraldireita                
+        }
+
+        if (validate!=0 && JAJAJAJAJA!="NaN") {
+			outlog="<center><h5 style='color: #70936c;'><b>AVISOS</b></h5></center>"+outlog
+            document.getElementById("outlog").innerHTML=geralesquerda+outlog+geraldireita
+        }
+        
+        if (JAJAJAJAJA=="NaN") { 
+            outlog="<center><h5 style='color: #70936c;'><b>CAMPOS NÃO PREENCHIDOS</b></h5></center>"
+            for (i in ConstrucaoInputs){
+                if((ConstrucaoInputs[i]).toString()=="NaN"){
+                    outlog=outlog+"<li style='color: #000000'>"+i+"</li>";
+                }    
+            }
+            if (buscacidade=="") {
+                outlog=outlog+"<li style='color: #000000'>"+"localização"+"</li>";
+            }
+            if ($('#tipologia').val()=="") {
+                outlog=outlog+"<li style='color: #000000'>"+"tipologia"+"</li>";
+            }
+            document.getElementById("outlog").innerHTML=geralesquerda+outlog+geraldireita                
+        }	
     }
