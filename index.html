@@ -24,7 +24,9 @@ $(document).ready(function(){
     $('[data-toggle="popover"]').popover();   
 });
 
-var x;
+$(document).ready(function(){
+	document.getElementById("calc").disabled=false;
+});
 
 </script>
 <style>
@@ -238,10 +240,10 @@ color: #70936c;
 </div>
 	<div class="row">
 		<div class="col-md-6">
-			<button data-toggle="modal" id="calc" onclick="main();" href="#windowOUTLOG" class="btn btn-primary  btn-lg active col-sm-12">CALCULAR</button> 
+			<button data-toggle="modal" id="calc" onclick="main();" href="#windowOUTLOG" class="btn btn-primary btn-lg active btn-block" disabled>CALCULAR</button> 
 		</div>
 		<div class="col-md-6">
-			<button data-toggle="modal" href="#shortModal" class="btn btn-primary  btn-lg active col-sm-12">NATURAL COMFORT</button>
+			<button data-toggle="modal" href="#shortModal" class="btn btn-primary  btn-lg active btn-block">NATURAL COMFORT</button>
 		</div>
 	</div>
 </div>
