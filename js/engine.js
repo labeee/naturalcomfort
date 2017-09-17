@@ -298,16 +298,16 @@
         
         if (JAJAJAJAJA=="NaN") { 
             outlog="<center><h5 style='color: #70936c;'><b>CAMPOS NÃO PREENCHIDOS</b></h5></center>"
-            for (i in ConstrucaoInputs){
-                if((ConstrucaoInputs[i]).toString()=="NaN"){
-                    outlog=outlog+"<li style='color: #000000'>"+i+"</li>";
-                }    
-            }
             if (buscacidade=="") {
                 outlog=outlog+"<li style='color: #000000'>"+"localização"+"</li>";
             }
             if ($('#tipologia').val()=="") {
                 outlog=outlog+"<li style='color: #000000'>"+"tipologia"+"</li>";
+            }            
+			for (i in ConstrucaoInputs){
+                if((ConstrucaoInputs[i]).toString()=="NaN"){
+                    outlog=outlog+"<li style='color: #000000'>"+i+"</li>";
+                }    
             }
             document.getElementById("outlog").innerHTML=geralesquerda+outlog+geraldireita                
         }	
