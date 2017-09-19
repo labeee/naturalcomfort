@@ -31,6 +31,12 @@ $(window).on("load",function() {
 </script>
 <style>
 
+
+@font-face {		
+	font-family: "mFont";
+	src: url("fonts/fitho.ttf");
+}
+
 a:visited {
     color: #70936c;
 }
@@ -49,11 +55,20 @@ color: #70936c;
 
 body {
     background-image: url("img/bg_noise.png");
-	 background-color: #333333;
+	background-color: #333333;
+	font-size: 12px;
 }
 
-.button {
-	background-color: #4CAF50; /* Green */
+#calc {
+    background-image: url('img/bg_noise.png');
+}
+
+#about {
+    background-image: url('img/bg_noise.png');
+}
+
+h3 {
+    font-size: 22px;
 }
 
 </style>
@@ -95,13 +110,13 @@ body {
     
 <div class="row form-group" style="color: #70936c">
 	<div class="col-sm-6">
-		<label><h4 style="color: #008b8b; font-weight:bold; ">LOCALIZAÇÃO</h4></label>
+		<label><h3 style="color: #008b8b; font-weight:bold; font-family: mFont; ">LOCALIZAÇÃO</h3></label>
 		<select id="cidades" class="form-control col-sm-12 js-example-basic-single">
 			<!-- Cidades -->
 		</select>
 	</div>	
 	<div class="col-sm-6">		
-		<label><h4 style="color: #008b8b; font-weight:bold; ">TIPOLOGIA</h4></label>
+		<label><h3 style="color: #008b8b; font-weight:bold;	font-family: mFont; ">TIPOLOGIA</h3></label>
         <select id="tipologia" class="form-control col-sm-12 js-example-basic-single">
             <option></option>
 		    <option value="escritorio">Escritório</option>
@@ -110,19 +125,19 @@ body {
 	</div>
 </div>
 
-<h4 style="color: #008b8b; font-weight:bold; ">CARACTERÍSTICAS GEOMÉTRICAS</h4>
+<h3 style="color: #008b8b; font-weight:bold; font-family: mFont; ">CARACTERÍSTICAS GEOMÉTRICAS</h3>
 <div class="row form-group" style="color: #70936c">
 	<div class="col-sm-3">
 		<label>bldgLength <a href="#" data-toggle="popover" data-trigger="focus" title="Maior dimensão entre os lados da edificação" data-content="13 - 200 [m]"><i class="fa fa-info-circle"></i></a></label>
-		<input type="number" id="bldgLength" class="form-control">
+		<input type="number" id="bldgLength" class="form-control" step="0.5">
 	</div>
 	<div class="col-sm-3">
 		<label>bldgDepth <a href="#" data-toggle="popover" data-trigger="focus" title="Menor dimensão entre os lados da edificação" data-content="8 - 50 [m]"><i class="fa fa-info-circle"></i></a></label>
-		<input type="number" id="bldgDepth" class="form-control">
+		<input type="number" id="bldgDepth" class="form-control" step="0.5">
 	</div>
 	<div class="col-sm-3">
 		<label>floorHeight <a href="#" data-toggle="popover" data-trigger="focus" title="Altura entre pavimentos" data-content="2.75 - 4.25 [m]"><i class="fa fa-info-circle"></i></a></label>
-		<input type="number" id="floorHeight" class="form-control">
+		<input type="number" id="floorHeight" class="form-control" step="0.05">
 	</div>
 	<div class="col-sm-3">
 		<label>Nfloors <a href="#" data-toggle="popover" data-trigger="focus" title="Número de pavimentos" data-content="1 - 5"><i class="fa fa-info-circle"></i></a></label>
@@ -140,15 +155,15 @@ body {
 <div class="row form-group" style="color: #70936c;">
 	<div class="col-sm-3">
 		<label>roomSize <a href="#" data-toggle="popover" data-trigger="focus" title="Área média das salas ocupadas" data-content="9 - 400 [m²]"><i class="fa fa-info-circle"></i></a></label>
-		<input type="number" id="roomSize" class="form-control">
+		<input type="number" id="roomSize" class="form-control" step="0.5">
 	</div>
 	<div class="col-sm-3">	
 		<label>stairFracFPA <a href="#" data-toggle="popover" data-trigger="focus" title="Fração total da área do edifício destinada às escadas" data-content="0 - 0.28"><i class="fa fa-info-circle"></i></a></label>
-		<input type="number" id="stairFracFPA" class="form-control">
+		<input type="number" id="stairFracFPA" class="form-control" step="0.01">
 	</div>
 	<div class="col-sm-3">
 		<label>WWR <a href="#" data-toggle="popover" data-trigger="focus" title="Fração de abertura da fachada" data-content="0.05 - 0.7"><i class="fa fa-info-circle"></i></a></label>
-		<input type="number" id="WWR" class="form-control">
+		<input type="number" id="WWR" class="form-control" step="0.01">
 	</div>
 	<div class="col-sm-3">	
 		<label>shadingAngle <a href="#" data-toggle="popover" data-trigger="focus" data-content="Ângulo médio de sombreamento vertical médio"><i class="fa fa-info-circle"></i></a></label>
@@ -162,46 +177,46 @@ body {
 	</div>
 </div>
 
-<h4 style="color: #008b8b; font-weight:bold; ">PROPRIEDADES TÉRMICAS</h4>
+<h3 style="color: #008b8b; font-weight:bold; font-family: mFont; ">PROPRIEDADES TÉRMICAS</h3>
 
 <div class="row form-group" style="color: #70936c;">
 	<div class="col-sm-3">
 		<label>extWallAbs <a href="#" data-toggle="popover" data-trigger="focus" title="Absortância solar média das paredes externas" data-content="0.2 - 0.8"><i class="fa fa-info-circle"></i></a></label>
-		<input type="number" id="extWallAbs" class="form-control">
+		<input type="number" id="extWallAbs" class="form-control" step="0.01">
 	</div>
 	<div class="col-sm-3">
 		<label>extWallU <a href="#" data-toggle="popover" data-trigger="focus" title="Transmitância térmica média das paredes" data-content="0.1 - 5 [W/m².K]"><i class="fa fa-info-circle"></i></a></label>
-		<input type="number" id="extWallU" class="form-control">
+		<input type="number" id="extWallU" class="form-control" step="0.05">
 	</div>
 	<div class="col-sm-3">
 		<label>extWallCT <a href="#" data-toggle="popover" data-trigger="focus" title="Capacidade térmica média das paredes" data-content="40 - 500 [kJ/ m².K]"><i class="fa fa-info-circle"></i></a></label>
-		<input type="number" id="extWallCT" class="form-control">
+		<input type="number" id="extWallCT" class="form-control" step="0.5">
 	</div>
 	<div class="col-sm-3">
 		<label>roofAbs <a href="#" data-toggle="popover" data-trigger="focus" title="Absortância solar média da cobertura" data-content="0.2 - 0.8"><i class="fa fa-info-circle"></i></a></label>
-		<input type="number" id="roofAbs" class="form-control">
+		<input type="number" id="roofAbs" class="form-control" step="0.01">
 	</div>
 </div>
 <div class="row form-group" style="color: #70936c;">
 	<div class="col-sm-3">	
 		<label>roofU <a href="#" data-toggle="popover" data-trigger="focus" title="Transmitância térmica média da cobertura" data-content="0.1 - 5 [W/m².K]"><i class="fa fa-info-circle"></i></a></label>
-		<input type="number" id="roofU" class="form-control">
+		<input type="number" id="roofU" class="form-control" step="0.05">
 	</div>
 	<div class="col-sm-3">
 		<label>roofCT <a href="#" data-toggle="popover" data-trigger="focus" title="Capacidade térmica média da cobertura" data-content="10 - 400 [kJ/ m².K]"><i class="fa fa-info-circle"></i></a></label>
-		<input type="number" id="roofCT" class="form-control">
+		<input type="number" id="roofCT" class="form-control" step="0.5">
 	</div>
 	<div class="col-sm-3">
 		<label>SHGC <a href="#" data-toggle="popover" data-trigger="focus" title="Coeficiente de ganho solar do vidro" data-content="0.2 - 0.8"><i class="fa fa-info-circle"></i></a></label>
-		<input type="number" id="SHGC" class="form-control">
+		<input type="number" id="SHGC" class="form-control" step="0.01">
 	</div>
 	<div class="col-sm-3">
 		<label>windowU <a href="#" data-toggle="popover" data-trigger="focus" title="Transmitância térmica do vidro" data-content="1 - 6 [W/m².K]"><i class="fa fa-info-circle"></i></a></label>
-		<input type="number" id="windowU" class="form-control">
+		<input type="number" id="windowU" class="form-control" step="0.05">
 	</div>
 </div>
     
-<h4 style="color: #008b8b; font-weight:bold; ">VENTILAÇÃO</h4>
+<h3 style="color: #008b8b; font-weight:bold;	font-family: mFont; ">VENTILAÇÃO</h3>
 <div class="row form-group" style="color: #70936c;">
 	<div class="col-sm-6">
 		<label>windAlpha <a href="#" data-toggle="popover" data-trigger="focus" data-content="Fator de correção da velocidade do ar externa"><i class="fa fa-info-circle"></i></a></label>
@@ -228,7 +243,7 @@ body {
 <div class="row form-group" style="color: #70936c;">
 	<div class="col-sm-4">
 		<label>PW_width2height <a href="#" data-toggle="popover" data-trigger="focus" title="Relação entre a largura e a altura das janelas primárias" data-content="0.1 - 50"><i class="fa fa-info-circle"></i></a></label>
-		<input type="number" id="PW_width2height" class="form-control">
+		<input type="number" id="PW_width2height" class="form-control" step="0.5">
 	</div>
 	<div class="col-sm-4">
 		<label>windowMaxOpenFrac <a href="#" data-toggle="popover" data-trigger="focus" data-content="Média da fração máxima de abertura de todas as janelas"><i class="fa fa-info-circle"></i></a></label>
@@ -252,7 +267,7 @@ body {
 			<button data-toggle="modal" id="calc" onclick="main();" href="#windowOUTLOG" class="btn btn-primary btn-lg active btn-block" disabled>CALCULAR</button> 
 		</div>
 		<div class="col-md-6">
-			<button data-toggle="modal" href="#shortModal" class="btn btn-primary  btn-lg active btn-block">NATURAL COMFORT</button>
+			<button data-toggle="modal" id="about" href="#shortModal" class="btn btn-primary  btn-lg active btn-block">NATURAL COMFORT</button>
 		</div>
 	</div>
 </div>

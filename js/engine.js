@@ -55,7 +55,7 @@
         terms['ARsym'] = Math.max(terms['bldgDepth'],terms['bldgLength'])/Math.min(terms['bldgDepth'],terms['bldgLength']);      
         
         if (terms['ARsym'] > 4){
-			outlog=outlog+"<li style='color: #000000'>"+'Building aspect ratio is ' + (terms['ARsym']).toString() + ', porém não deveria exceder a 4'+"</li>"
+			outlog=outlog+"<li style='color: #000000'>"+'A razão entre as variáveis bldgLength e bldgDepth é ' + (terms['ARsym']).toString() + ', porém não deve exceder a 4'+"</li>"
             validate = 1;
         }
         
@@ -63,7 +63,7 @@
         
         
         if (terms['bldgHeight'] > 16){
-			outlog=outlog+"<li style='color: #000000'>"+'A altura do edifício é ' + (terms['bldgHeight']).toString() + ', porém não deveria exceder a 16 m'+"</li>"
+			outlog=outlog+"<li style='color: #000000'>"+'A altura do edifício é ' + (terms['bldgHeight']).toString() + ', porém não deve exceder a 16 m'+"</li>"
             validate = 1;
         }
         
