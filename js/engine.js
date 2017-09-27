@@ -288,7 +288,7 @@
        
 		if (validate==0 && EHFhot!="NaN") {
             outlog="<center><h5 style='color: #70936c;'><b>EHFhot</b></h5></center>";
-			outlog=outlog+"<center><h1>"+100*EHFhot+"%</h1></center>";
+			outlog=outlog+"<center><h1 style='color: #70936c;'>"+100*EHFhot+"%</h1></center>";
             document.getElementById("outlog").innerHTML=geralesquerda+outlog+geraldireita                
         }
 
