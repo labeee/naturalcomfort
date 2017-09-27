@@ -279,24 +279,25 @@
 		delete input['latitude'];
 		delete input['longitude'];		
 		
-		var JAJAJAJAJA=makePrediction(input).toFixed(2);
+		var EHFhot=makePrediction(input).toFixed(2);
 		
-		geralesquerda="<div id='windowOUTLOG' class='modal modal-wide fade'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button><h4 class='modal-title'>CONSOLE</h4></div><div class='modal-body'><ul id='outlog' class='list-inline'>";
+		geralesquerda="<div id='windowOUTLOG' class='modal modal-wide fade'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button><h4 class='modal-title'>AVISOS</h4></div><div class='modal-body'><ul id='outlog' class='list-inline'>";
 		
 		geraldireita="</ul></div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Fechar</button></div></div></div></div>";
 	
        
-		if (validate==0 && JAJAJAJAJA!="NaN") {
-            outlog="EHF = "+100*JAJAJAJAJA+"%"
+		if (validate==0 && EHFhot!="NaN") {
+            outlog="<center><h5 style='color: #70936c;'><b>EHFhot</b></h5></center>";
+			outlog=outlog+"<center><h1>"+100*EHFhot+"%</h1></center>";
             document.getElementById("outlog").innerHTML=geralesquerda+outlog+geraldireita                
         }
 
-        if (validate!=0 && JAJAJAJAJA!="NaN") {
-			outlog="<center><h5 style='color: #70936c;'><b>AVISOS</b></h5></center>"+outlog
+        if (validate!=0 && EHFhot!="NaN") {
+			outlog="<center><h5 style='color: #70936c;'><b>INCONSISTÊNCIAS</b></h5></center>"+outlog
             document.getElementById("outlog").innerHTML=geralesquerda+outlog+geraldireita
         }
         
-        if (JAJAJAJAJA=="NaN") { 
+        if (EHFhot=="NaN") { 
             outlog="<center><h5 style='color: #70936c;'><b>CAMPOS NÃO PREENCHIDOS</b></h5></center>"
             if (buscacidade=="") {
                 outlog=outlog+"<li style='color: #000000'>"+"localização"+"</li>";
